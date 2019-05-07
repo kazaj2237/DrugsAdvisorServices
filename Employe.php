@@ -5,7 +5,7 @@
  * Date: 07/05/2019
  * Time: 18:26
  */
-require_once '../Tools/connect.php';
+require_once 'Tools/connect.php';
 class Employe
 {
   private $idEmploye;
