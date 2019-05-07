@@ -111,4 +111,9 @@ class Utilisateur
         $this->motDePasse = $motDePasse;
     }
 
+    public  function  Add_user($idUtilisateur,$nom,$prenom,$sexe,$email,$motDePasse)
+    {
+
+    }
+
 }
