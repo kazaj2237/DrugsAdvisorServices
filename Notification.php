@@ -5,7 +5,7 @@
  * Date: 07/05/2019
  * Time: 18:02
  */
-
+require_once 'Tools/connect.php';
 class Notification
 {
     private  $idNotif;
@@ -109,6 +109,15 @@ class Notification
     public function setHeure($heure)
     {
         $this->heure = $heure;
+    }
+
+    public  function Get_notifications($idUtilisateur)
+    {
+        global  $pdo;
+        $req=$pdo->prepare('SELECT n.idNotif,n.titre,n.message,n.lien,n.date,n.heure,u.idUtilisateur,u.nom
+          FROM Notifications n JOIN Utilisateur U on n.UtilisateuridUtilisateur = U.idUtilisateur WHERE idUtilisateur=?');
+        $req->execute([$idUtilisateur]);
+        return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
 
