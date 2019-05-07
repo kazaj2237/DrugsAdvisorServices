@@ -5,7 +5,7 @@
  * Date: 07/05/2019
  * Time: 17:25
  */
-
+require_once 'Tools/connect.php';
 class Horaire
 {
     private $idHoraire;
@@ -126,6 +126,14 @@ class Horaire
     public function setEstDeGarde($estDeGarde)
     {
         $this->estDeGarde = $estDeGarde;
+    }
+
+    public  function setHoraire($idHoraire, $jourSemaine,$heureOuverture, $heureFermeture, $debutValidite, $finValidite, $estDeGarde, $PharmacieidPharmacie){
+        global  $pdo;
+        $req=$pdo->prepare("INSERT INTO Horaire (idHoraire, jourSemaine, heureOuverture, heureFermeture, debutValidite, finValidite, estDeGarde, PharmacieidPharmacie)
+        values ($idHoraire, $jourSemaine, $heureOuverture, $heureFermeture, $debutValidite, $finValidite, $estDeGarde, $PharmacieidPharmacie)");
+        $req->execute();
+        return $req->fetchAll();
     }
 
 }

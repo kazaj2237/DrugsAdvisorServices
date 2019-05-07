@@ -5,7 +5,7 @@
  * Date: 07/05/2019
  * Time: 17:35
  */
-
+require_once 'Tools/connect.php';
 class Quartier
 {
     private $idQuartier;
