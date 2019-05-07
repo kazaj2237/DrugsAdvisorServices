@@ -5,6 +5,7 @@
  * Date: 07/05/2019
  * Time: 17:24
  */
+require_once '../Tools/connect.php';
 
 class Commentaire
 {

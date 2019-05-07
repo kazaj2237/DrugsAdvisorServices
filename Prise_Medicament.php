@@ -5,6 +5,7 @@
  * Date: 07/05/2019
  * Time: 17:36
  */
+require_once '../Tools/connect.php';
 
 class Prise_Medicament
 {

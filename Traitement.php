@@ -5,7 +5,7 @@
  * Date: 07/05/2019
  * Time: 17:31
  */
-
+require_once 'Tools/connect.php';
 class Traitement
 {
     private $idTraitement;
@@ -109,6 +109,15 @@ class Traitement
     public function setUniteFrequence($uniteFrequence)
     {
         $this->uniteFrequence = $uniteFrequence;
+    }
+    public  function Get_traitements($idUtilisateur)
+    {
+        global  $pdo;
+        $req=$pdo->prepare('SELECT t.libelle,t.duree,t.uniteDuree,t.frequenceRappel,t.uniteFrequence,
+          u.idUtilisateur,u.nom,u.prenom,u.sexe,u.email FROM Traitement t JOIN Utilisateur u ON t.UtilisateuridUtilisateur = u.idUtilisateur
+          WHERE u.idUtilisateur=? ');
+        $req->execute([$idUtilisateur]);
+        return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
     
