@@ -60,4 +60,17 @@ class Commentaire
         $this->description = $description;
     }
 
+    public function addComment($idPharmacie, $commentaire, $idUser, $libelle)
+    {
+        global  $pdo;
+
+            $req=$pdo->prepare("INSERT INTO Commentaire (libelle, description, UtilisateuridUtilisateur, PharmacieidPharmacie)
+values ($libelle, $commentaire, $idUser, $idPharmacie) ");
+
+            $req->execute();
+
+    }
+
+
+
 }

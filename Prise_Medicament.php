@@ -111,4 +111,14 @@ class Prise_Medicament
         $this->uniteQuantite = $uniteQuantite;
     }
 
+    public function GetPrise($idUser, $idTraitement)
+    {
+        global  $pdo;
+        $req=$pdo->prepare("SELECT * FROM Prise_Medicament p JOIN Traitement t ON p.TraitementidTraitement = t.idTraitement JOIN Utilisateur u ON u.idUtilisateur = t.UtilisateuridUtilisateur WHERE t.idTraitement = $idTraitement AND u.idUtilisateur = $idUser ");
+            $req->execute();
+            return $req->fetchAll();
+
+
+    }
+
 }
