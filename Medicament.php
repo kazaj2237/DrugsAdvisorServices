@@ -5,7 +5,7 @@
  * Date: 07/05/2019
  * Time: 17:22
  */
-
+require_once 'Tools/connect.php';
 class Medicament
 {
     private $idMedicament;
@@ -75,6 +75,14 @@ class Medicament
     public function setNotice($notice)
     {
         $this->notice = $notice;
+    }
+
+    public  function Get_medicaments()
+    {
+        global  $pdo;
+        $req=$pdo->prepare('SELECT * FROM Medicament');
+        $req->execute([]);
+        return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
 }

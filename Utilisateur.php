@@ -5,7 +5,7 @@
  * Date: 07/05/2019
  * Time: 18:06
  */
-
+    require_once  'Tools/connect.php';
 class Utilisateur
 {
     private $idUtilisateur;
@@ -111,9 +111,25 @@ class Utilisateur
         $this->motDePasse = $motDePasse;
     }
 
-    public  function  Add_user($idUtilisateur,$nom,$prenom,$sexe,$email,$motDePasse)
+    public  function  Add_user($nom,$prenom,$sexe,$email,$motDePasse)
     {
+        global  $pdo;
+        $req=$pdo->prepare('INSERT INTO Utilisateur (nom, prenom, sexe, email, motDePasse) VALUES (?,?,?,?,?)');
+       return $req->execute([$nom,$prenom,$sexe,$email,$motDePasse]);
+    }
+    public function Login($email,$motDePasse)
+    {
+        global  $pdo;
+        $req=$pdo->prepare('SELECT * FROM Utilisateur WHERE  email=? AND motDePasse=?');
+        $req->execute([$email,$motDePasse]);
+        return $req->fetch(PDO::FETCH_OBJ);
+    }
 
+    public  function Update_user($idUtilisateur)
+    {
+        global  $pdo;
+        $req=$pdo->prepare('UPDATE Utilisateur SET nom=?, prenom=?,sexe=?,email=?,motDePasse=? WHERE idUtilisateur=?');
+         return  $req->execute([$idUtilisateur]);
     }
 
 }
