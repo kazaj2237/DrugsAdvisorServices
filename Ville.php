@@ -6,6 +6,8 @@
  * Time: 17:56
  */
 
+require_once 'Tools/connect.php';
+
 class Ville
 {
     private $idVille;

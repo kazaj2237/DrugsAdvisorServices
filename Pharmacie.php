@@ -6,6 +6,8 @@
  * Time: 17:53
  */
 
+require_once 'Tools/connect.php';
+
 class Pharmacie
 {
     private  $idPharmacie;
@@ -35,7 +37,6 @@ class Pharmacie
     {
         return $this->nom;
     }
-
     /**
      * @param mixed $nom
      */
@@ -75,4 +76,5 @@ class Pharmacie
     {
         $this->image = $image;
     }
+
 }
