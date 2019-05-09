@@ -128,10 +128,10 @@ class Horaire
         $this->estDeGarde = $estDeGarde;
     }
 
-    public  function setHoraire($idHoraire, $jourSemaine,$heureOuverture, $heureFermeture, $debutValidite, $finValidite, $estDeGarde, $PharmacieidPharmacie){
+    public  function setHoraire( $jourSemaine,$heureOuverture, $heureFermeture, $debutValidite, $finValidite, $estDeGarde, $PharmacieidPharmacie){
         global  $pdo;
-        $req=$pdo->prepare("INSERT INTO Horaire (idHoraire, jourSemaine, heureOuverture, heureFermeture, debutValidite, finValidite, estDeGarde, PharmacieidPharmacie)
-        values ($idHoraire, $jourSemaine, $heureOuverture, $heureFermeture, $debutValidite, $finValidite, $estDeGarde, $PharmacieidPharmacie)");
+        $req=$pdo->prepare("INSERT INTO Horaire (jourSemaine, heureOuverture, heureFermeture, debutValidite, finValidite, estDeGarde, PharmacieidPharmacie)
+        values ( $jourSemaine, $heureOuverture, $heureFermeture, $debutValidite, $finValidite, $estDeGarde, $PharmacieidPharmacie)");
         $req->execute();
         return $req->fetchAll();
     }

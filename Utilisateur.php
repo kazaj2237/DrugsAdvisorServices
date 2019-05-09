@@ -125,11 +125,11 @@ class Utilisateur
         return $req->fetch(PDO::FETCH_OBJ);
     }
 
-    public  function Update_user($idUtilisateur)
+    public  function Update_user($idUtilisateur,$nom,$prenom,$sexe,$email,$motDePasse)
     {
         global  $pdo;
         $req=$pdo->prepare('UPDATE Utilisateur SET nom=?, prenom=?,sexe=?,email=?,motDePasse=? WHERE idUtilisateur=?');
-         return  $req->execute([$idUtilisateur]);
+         return  $req->execute([$nom,$prenom,$sexe,$email,$motDePasse,$idUtilisateur]);
     }
 
 }
